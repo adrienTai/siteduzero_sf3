@@ -1,0 +1,7 @@
+<html>
+  <body>
+    {{ 'advert.nombre'|transchoice(1) }}
+    
+    Aujourd'hui nous sommes le {{ 'now'|localizeddate('full', 'none') }} et il est {{ 'now'|localizeddate('none', 'short') }}
+  </body>
+</html>

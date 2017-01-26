@@ -1,0 +1,27 @@
+oc_core:
+    resource: "@OCCoreBundle/Resources/config/routing.yml"
+
+oc_platform:
+    resource: "@OCPlatformBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/platform
+    requirements:
+        _locale: en|fr
+
+fos_user_security:
+    resource: "@OCUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@OCUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@OCUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@OCUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@OCUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

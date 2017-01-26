@@ -1,0 +1,29 @@
+{% extends "OCCoreBundle::layout.html.twig" %}
+
+{% block body %}
+
+	{% if app.session.flashBag.has('notice') %}
+		<div class="alert alert-warning">
+			{% for msg in app.session.flashBag.get('notice') %}
+				{{ msg }}
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<h2>Dernières Annonces</h2>
+
+	<ul>
+    {% for advert in lastAdverts %}
+		<li>
+			<a href="{{ path('oc_platform_view', {'id': advert.id}) }}">
+				{{ advert.title }}
+			</a>
+			par {{ advert.author }},
+			le {{ advert.date|date('d/m/Y') }}
+		</li>
+    {% else %}
+		<li>Pas (encore !) d'annonces</li>
+    {% endfor %}
+	</ul>
+
+{% endblock %}
