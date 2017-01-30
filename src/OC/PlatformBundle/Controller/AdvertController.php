@@ -50,7 +50,7 @@ class AdvertController extends Controller
 
 
 	public function viewAction(Advert $advert, Request $request){
-		$tag = $request->query->get('tag');
+		//$tag = $request->query->get('tag');
 
 		//$repository = $this->get('doctrine')->getManager()->getRepository('OCPlatformBundle:Advert');
 		$em = $this->getDoctrine()->getManager();
@@ -80,18 +80,20 @@ class AdvertController extends Controller
 	* @ParamConverter("date", options={"format": "Y-m-d"})
 	*/
 	public function viewListAction(\Datetime $date){
-		var_dump($date);
-		die();
+		//var_dump($date);
+		//die();
 		
 	}
 
+/*
 	/**
 	* @ParamConverter("json")
-	*/
+	* /
 	public function ParamConverterAction($json)
 	{
 		return new Response(print_r($json, true));
 	}
+*/
 
 	/*
 	* @Security("has_role('ROLE_AUTEUR')")
@@ -143,7 +145,7 @@ class AdvertController extends Controller
 		
 		$em = $this->getDoctrine()->getManager();
 		$advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
-		if( null == $advert){
+		if( null === $advert){
 			throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
 		}
 		
@@ -230,9 +232,9 @@ class AdvertController extends Controller
 		
 		//on récupère un tableau qui précise les id supprimés/conservés
 		$res= $purger->purge($days);
-		if($res !==false && !EMPTY($res) ){
+		if($res !== false && !EMPTY($res) ){
 			foreach($res as $key=>$bool){
-				if($bool == true){
+				if($bool === true){
 					$request->getSession()->getFlashBag()->add('notice', "Annonce numéro $key a bien été supprimée");
 				}else{
 					$request->getSession()->getFlashBag()->add('notice', "Annonce numéro $key contient des candidatures, nous ne pouvons la supprimer.");	
@@ -243,6 +245,7 @@ class AdvertController extends Controller
 		}		
 		return $this->redirectToRoute('oc_platform_home', ['id'=> 1]);
 	}
+
 	
 	public function endFixturesAction(Request $request){
 		$em = $this->getDoctrine()->getManager();
@@ -278,6 +281,8 @@ class AdvertController extends Controller
 		$ASBB->setAdvert($advertB);	$ASBB->setSkill($skillSF);	$ASBB->setLevel('Bon');
 		$ASBC = new AdvertSkill();
 		$ASBC->setAdvert($advertB);	$ASBC->setSkill($skillJa);	$ASBC->setLevel('Moyen');
+		$ASBD = new AdvertSkill();
+		$ASBD->setAdvert($advertB);	$ASBD->setSkill($skillC);	$ASBD->setLevel('Moyen');
 
 		
 		$advertC->addCategory($catDev);
@@ -292,15 +297,16 @@ class AdvertController extends Controller
 		
 		$em->persist($advertA);		$em->persist($advertB);		$em->persist($advertC);
 		$em->persist($ASAA);		$em->persist($ASAB);		
-		$em->persist($ASBA);		$em->persist($ASBB);		$em->persist($ASBC);
-		$em->persist($ASCA);		$em->persist($ASCB);		$em->persist($ASCC);
+		$em->persist($ASBA);		$em->persist($ASBB);		$em->persist($ASBC);	$em->persist($ASBD);
+		$em->persist($ASCA);		$em->persist($ASCB);		$em->persist($ASCC);	
 		$em->flush();
 		
 		$request->getSession()->getFlashBag()->add('notice', 'fixtures bien corrigées');	
 		
 		return $this->redirectToRoute('oc_platform_home', ['id'=> 1]);
 	}
-	
+
+/*
 public function testAction(Request $request)
   {
     $advert = new Advert;
@@ -324,7 +330,7 @@ public function testAction(Request $request)
       return new Response("L'annonce est valide !");
     }
   }
-  
+  */
   
   	public function isFloodingAction($seconds)
   	{
@@ -333,11 +339,13 @@ public function testAction(Request $request)
   		return new Response((string) $result);
   	}
   	
+/*	
 	public function translationAction($name)
 	{
 		return $this->render('OCPlatformBundle:Advert:translation.html.twig', array(
 		'name' => $name
 		));
 	}
+*/
 }
 

@@ -4,7 +4,7 @@ namespace OC\PlatformBundle\Bigbrother;
 use OC\PlatformBundle\Event\PlatformEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class MessageListener implements EventSubscriberInterface
+class CensorshipListener implements EventSubscriberInterface
 {
   // La méthode de l'interface que l'on doit implémenter, à définir en static
   static public function getSubscribedEvents()

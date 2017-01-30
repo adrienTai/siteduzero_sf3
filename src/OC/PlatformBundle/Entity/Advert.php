@@ -134,7 +134,7 @@ class Advert
   /**
    * @param \DateTime $date
    */
-  public function setDate($date)
+  public function setDate(\DateTime $date)
   {
   	//I cheat a little bit because I use datepicker, so when I add a date I have smth like 2016-12-25 00:00:00
   	//so I add what is missing insteed of installing datetimepicker
