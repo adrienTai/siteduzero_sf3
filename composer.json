@@ -2,7 +2,7 @@
     "name": "wolff/siteduzero",
     "license": "proprietary",
     "type": "project",
-    "description": "Tutorial for Symfony3 by OPC, official MOOC co-wrtien by Sensio Lab's crew yeah!"
+    "description": "Tutorial for Symfony3 by OPC, official MOOC co-wrtien by Sensio Lab's crew yeah!",
     "autoload": {
         "psr-4": {
             "": "src/"
