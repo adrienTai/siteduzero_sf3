@@ -23,11 +23,12 @@ class isFloodingService
 		$ip = $this->request_stack->getCurrentRequest()->getClientIp();
 		$a= $this->manager->getRepository('OCPlatformBundle:Advert')->isFlood($ip, $seconds);
 		$b= $this->manager->getRepository('OCPlatformBundle:Application')->isFlood($ip, $seconds);
-		echo "<pre>";
-var_dump($a);
-		
-		var_dump($b);
-		die();
+		/*
+			echo "<pre>";
+			var_dump($a);
+			var_dump($b);
+			die();
+		*/
 		if(empty($a) || empty($b)){
 			return true;
 		}		

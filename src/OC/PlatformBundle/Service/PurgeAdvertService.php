@@ -10,11 +10,10 @@ class PurgeAdvertService
 {
 
 	public $manager;
-    private $request_stack;
     
-	public function __construct(EntityManager $manager, RequestStack $request_stack){
+	public function __construct(EntityManager $manager){
 		$this->manager = $manager;
-		$this->request_stack = $request_stack;
+		
 	}
 
 	public function purge($days)
@@ -31,7 +30,7 @@ class PurgeAdvertService
 		return $advertDeleted;
 	}
 	
-	public function deleteOne($advert, $purge =false)
+	public function deleteOne(Advert $advert, $purge =false)
 	{
 		if($advert->getNbApplications() == 0 ){
 			//je supprime ses relations avec category

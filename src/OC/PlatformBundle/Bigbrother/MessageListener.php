@@ -1,6 +1,5 @@
 <?php
 // src/OC/PlatformBundle/Bigbrother/MessageListener.php
-
 namespace OC\PlatformBundle\Bigbrother;
 
 use OC\PlatformBundle\Event\MessagePostEvent;

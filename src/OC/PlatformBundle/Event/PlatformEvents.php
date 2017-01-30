@@ -1,8 +1,7 @@
-
 <?php
 // src/OC/PlatformBundle/Event/PlatformEvents.php
-
 namespace OC\PlatformBundle\Event;
+
 
 final class PlatformEvents
 {
